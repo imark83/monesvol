@@ -23,25 +23,28 @@ void getIJ(char c, int *i, int *j) {
 
 int main(int argc, char const *argv[]) {
   int i, j, k;
-  int noodle=4;
+  int noodle=1;
 
-  char *input="SECRETARIO PARA ELEGIR";
+  char *input="DESPACHO DEL SECRETARIO PARA"\
+  "ELEGIR LAS FOTOS PARA LA ORLA";
   // LCVDCEKDHA HIVI KPKVOL
 
-  for(k=0;k<strlen(input);++k){
-    char c=input[k];
+  for(noodle=1;noodle<=9;++noodle) {
+    for(k=0;k<strlen(input);++k){
+      char c=input[k];
 
-    if(('A'<=c && c <= 'Z') || c=='*') {
-      getIJ(c,&i,&j);
-      j-=noodle-1;
-      printf("%c",abc[(10*i+j)%27]);
-    } else {
-      noodle++;
-      printf(" ");
+      if(('A'<=c && c <= 'Z') || c=='*') {
+        getIJ(c,&i,&j);
+        j=(j+noodle-1)%9;
+        i=(i+noodle-1)%3;
+        printf("%c",abc[(10*i+j)%27]);
+      } else {
+        //noodle++;
+        printf(" ");
+      }
     }
-
+    printf("\n");
   }
-
 
   return 0;
 }
