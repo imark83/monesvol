@@ -23,9 +23,9 @@ void getIJ(char c, int *i, int *j) {
 
 int main(int argc, char const *argv[]) {
   int i, j, k;
-  int noodle=1;
+  int noodle=2;
 
-  char *input="EL LUNES EN HORA DE TUTORIA EN LA QUE "\
+  const char *input="EL LUNES EN HORA DE TUTORIA EN LA QUE "\
       "NO ESTOY PARA EJERCER DE GRAN TUTO ID AL DESPACHO"\
       " DEL SECRETARIO PARA ELEGIR LAS FOTOS PARA LA ORLA"\
       " BASTA QUE VAYAIS SOBRE LAS NUEVE YA SE QUE UN "\
@@ -33,9 +33,10 @@ int main(int argc, char const *argv[]) {
   // LCVDCEKDHA HIVI KPKVOL
 
 
-  if(argc>1) input = argv[1];
+  if(argc>1) noodle = atoi(argv[1]);;
 
-  for(noodle=1;noodle<=9;++noodle) {
+
+  //for(noodle=1;noodle<=9;++noodle) {
     for(k=0;k<strlen(input);++k){
       char c=input[k];
 
@@ -45,12 +46,13 @@ int main(int argc, char const *argv[]) {
         i=(i+noodle-1)%3;
         printf("%c",abc[(10*i+j)%27]);
       } else {
-        //noodle++;
+        noodle = noodle-1;
+        if(!noodle) noodle=9;
         printf(" ");
       }
     }
     printf("\n");
-  }
+  //}
 
   return 0;
 }
