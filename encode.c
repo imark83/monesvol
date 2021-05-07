@@ -25,9 +25,15 @@ int main(int argc, char const *argv[]) {
   int i, j, k;
   int noodle=1;
 
-  char *input="DESPACHO DEL SECRETARIO PARA"\
-  "ELEGIR LAS FOTOS PARA LA ORLA";
+  char *input="EL LUNES EN HORA DE TUTORIA EN LA QUE "\
+      "NO ESTOY PARA EJERCER DE GRAN TUTO ID AL DESPACHO"\
+      " DEL SECRETARIO PARA ELEGIR LAS FOTOS PARA LA ORLA"\
+      " BASTA QUE VAYAIS SOBRE LAS NUEVE YA SE QUE UN "\
+      "LUNES SIN MÍ NO ES LO MISMO";
   // LCVDCEKDHA HIVI KPKVOL
+
+
+  if(argc>1) input = argv[1];
 
   for(noodle=1;noodle<=9;++noodle) {
     for(k=0;k<strlen(input);++k){
