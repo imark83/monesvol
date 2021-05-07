@@ -41,12 +41,12 @@ int main(int argc, char const *argv[]) {
 
       if(('A'<=c && c <= 'Z') || c=='*') {
         getIJ(c,&i,&j);
-        j=(j+noodle-1)%9;
-        i=(i+noodle-1)%3;
+        j=(j+((noodle!=0)? noodle : 1)-1)%9;
+        i=(i+((noodle!=0)? noodle : 1)-1)%3;
         printf("%c",keyb[i][j]);
       } else {
         noodle = noodle+1;
-        if(!noodle) noodle=9;
+        if(noodle==10) noodle=0;
         printf(" ");
       }
     }
