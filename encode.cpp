@@ -72,9 +72,9 @@ ostream & operator<<(ostream &out, vector<unsigned> &op) {
 int getRowCol(unsigned c, unsigned &i, unsigned &j, unsigned noodle){
   for(i=0;i<3;++i) for(j=1;j<10;++j)
     if(keyb[i][j-1]==c) {
-      i = (i+4-noodle)%3;
+      i = (i+3-noodle)%3;
       j = (j+9-noodle)%9+1;
-      return 10*i+j;
+      return (10*i+j-1)%27+1;
     }
   return -1;
 }
@@ -95,7 +95,10 @@ int main(int argc, char const *argv[]) {
 
   for(int k=0; k<msg_int.size(); ++k) {
     if(msg_int[k]==0) {noodle=(noodle%10)+1;}
-    else msg_int[k] = (getRowCol(msg_int[k],i,j,noodle)-1)%27+1;
+    else {
+      msg_int[k] = getRowCol(msg_int[k],i,j,noodle);
+      cout << " " << msg_int[k]; 
+    }
   }
 
 
