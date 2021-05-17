@@ -89,13 +89,21 @@ int main(int argc, char const *argv[]) {
   cout << msg_int << endl;
   
 
+
   unsigned i,j;
   int noodle=atoi(argv[2]);
 
 
   for(int k=0; k<msg_int.size(); ++k) {
-    if(msg_int[k]==0) {noodle=(noodle%10)+1;}
-    else msg_int[k] = (getRowCol(msg_int[k],i,j,noodle)-1)%27+1;
+    if(msg_int[k]==0) {
+      cout << (noodle=(noodle%10)+1) << endl;
+    } else {
+      i = msg_int[k]/10;
+      j = msg_int[k]%10;
+      i = (i+noodle-1)%3;
+      j = (j+noodle-1)%10;
+      msg_int[k] = keyb[i][j-1];
+    }
   }
 
 
